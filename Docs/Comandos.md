@@ -55,6 +55,10 @@ Criando uma nova imagem
 ```
 docker build -t usuarioDocker/nomeImagem:VersaoImagem enderecoDockeFile
 ```
+Iniciando Container recem criado
+```
+docker run -p portaHost:portaContainer imagen:tagVersão
+```
 Listando as Imagens Baixadas
 ```
 docker images
@@ -83,3 +87,6 @@ Removendo todas as redes
 ```
 docker network prune
 ```
+
+docker system prune
+
