@@ -87,6 +87,58 @@ Removendo todas as redes
 ```
 docker network prune
 ```
+-------------------------Buildx----------------------------------
+Listanto todos os Buildx
+```
+docker buildx ls
+```
+Criando um novo buildx
+```
+docker buildx create --name nomeBuildx --driver docker-container --use nomeBuildx
+```
+Ativando o Buildx
+```
+docker buildx inspect --bootstrap
+```
+Mudando de buildx
+```
+docker buildx use nomebuildx
+```
+Criando um novo container usando Buildx
+```
+docker buildx build --platform nomeDasPlataformas -t nomeImagem:VersaoContainer .
+```
+Subindo uma nova imagem
+```
+docker buildx build --platform nomeDasPlataformas -t nomeImagem:VersaoContainer . -- push
+```
+Cacheando Imagens usasndo docker builx
+```
+docker buildx build \
+--cache-to type=local,dest=../docker-cache \
+--cache-from type=local,src=../docker-cache \
+-t nomeImagem:versaoImagem .
+```
+Removendo todos os cache
+```
+docker buildx prune
+```
+Removendo um buildx
+```
+docker buildx rm nomeBuildx
+```
+Listando as Redes do Docker
+```
+docker network ls
+```
+Criando uma nova Rede
+```
+docker network create nomeRede
+```
+Criando um Container com Rede
+```
+docker run -d --name web --network nomerede nomeImage
+```
 
 docker system prune
 
