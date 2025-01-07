@@ -139,6 +139,11 @@ Criando um Container com Rede
 ```
 docker run -d --name web --network nomerede nomeImage
 ```
+Listando as configurações do docker compose
+```
+docker compose config
+```
+
 
 docker system prune
 

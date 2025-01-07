@@ -6,7 +6,7 @@ const message = process.env.MESSAGE || "Hello World!"
 
 // Criando a conexão com o MongoDB
 mongoose
-.connect("mongodb://db:27017/nodeapi", {})
+.connect("mongodb://mongo:27017/nodeapi", {})
 .then(() => {
     console.log("MongoDB Conectado");
 }).catch((err) => {
@@ -14,9 +14,9 @@ mongoose
 });
 
 app.get("/",(req,res) => {
-    res.send(message);
+    res.send(message + "\n Ola como vc esta \n");
 });
 
 app.listen(port,() => {
-    console.log(`Server Rodando na porta ${port}\n`);
+    console.log(`Server Rodando Na porta ${port}\n`);
 })

@@ -1,0 +1,39 @@
+services:
+  nodeapp:
+    build: .
+    container_name: nodeapp
+    volumes:
+      - ./:/home/node/app
+    ports:
+      - 3000:3000
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    volumes:
+      - ./nginx-html:/usr/share/nginx/html
+    ports:
+      - 8080:80
+    depends_on:
+      - nodeapp
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    ports:
+      - 27017:27017
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 5s
+      retries: 5
+      start_period: 10s
+      timeout: 5s
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data: 
+    

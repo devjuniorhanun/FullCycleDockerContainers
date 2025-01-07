@@ -9,7 +9,7 @@ ARG NODE_VERSION=23
 LABEL maintainer="Junior"
 
 # Diretorio de trabalho
-WORKDIR /app
+WORKDIR /usr/src/app
 
 # Copiando os arquivos package.json e package-lock.json
 COPY package*.json .
